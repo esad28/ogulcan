@@ -1,0 +1,557 @@
+        :root {
+            --primary-color: #007bff;
+            --hacker-green: #00ff00;
+            --bright-green: #39ff14;
+            --professional-green: #00FF80; /* Spring Green Tonu */
+            --secondary-color: #0d1117;
+            --dark-bg: #1a1a1a;
+            --text-color: #e0e0e0;
+            --light-text: #ffffff;
+            --skill-bar-bg: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Tüm site fontu Inter olarak ayarlandı */
+            font-family: 'Inter', sans-serif !important;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--dark-bg);
+            scroll-behavior: smooth;
+            /* Header yüksekliğine göre boşluk 55px olarak güncellendi */
+            padding-top: 55px;
+            position: relative;
+        }
+
+        /* YENİ NESİL SCROLLBAR STİLİ */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #2c2c2c;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: var(--professional-green);
+            border-radius: 10px;
+        }
+
+        /* BÖLÜMLERİN ORTAK STİLLERİ */
+        section {
+            padding: 80px 5%;
+            min-height: calc(100vh - 70px);
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+            /* Ayırıcı çizgi rengi Spring Green'e ayarlandı */
+            border-top: 1px solid rgba(0, 255, 128, 0.25);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 3.5em;
+            /* H2 Başlık rengi Spring Green */
+            color: var(--professional-green);
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 800;
+        }
+
+        /* HEADER VE NAVİGASYON STİLİ */
+        header {
+            background: var(--secondary-color);
+            /* Dikey padding azaltıldı */
+            padding: 10px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+            /* Yükseklik azaltıldı */
+            height: 55px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Dikeyde ortalama */
+        }
+
+        .logo {
+            /* Logo görünür ve stilize edildi */
+            display: block;
+            color: var(--professional-green);
+            font-size: 0.95em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            /* text-transform ve font-family JS tarafından kontrol edilir */
+        }
+
+        /* DEĞİŞİKLİK 3: İmleç Yanıp Sönme Animasyonu */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        #nav-cursor {
+            color: var(--professional-green);
+            display: inline-block;
+            font-weight: 700;
+            margin-left: 2px;
+            animation: blink 0.7s step-end infinite;
+        }
+
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.8s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            /* Hover rengi Spring Green */
+            color: var(--professional-green);
+            /* Hover arka planı Spring Green şeffaf tonu */
+            background: rgba(0, 255, 128, 0.1);
+            text-shadow: 0 0 5px var(--professional-green);
+        }
+
+        /* HERO SECTION (ANASAYFA GİRİŞ) STİLİ */
+        .hero {
+            background: transparent;
+            display: flex;
+            /* Kutuyu sola doğru yasla (çünkü banner tam genişlikte olacak) */
+            justify-content: flex-start;
+
+            /* Dikeyde ORTALAMAK için center olarak güncellendi */
+            align-items: center;
+            text-align: left;
+            overflow: hidden; /* Sağdan gelen içeriğin taşmasını engeller */
+            min-height: 115vh;
+
+            /* DEĞİŞİKLİK 1: Kutuyu yukarı çekme hamlesi (AGRESİF) */
+            padding: 0;
+            padding-top: 0;
+            margin-top: -150px; /* Negatif margin ile kutuyu yukarı çek */
+        }
+
+        /* CANVAS (Matrix) STİLİ */
+        #matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* YENİ BANNER YAPISI (TAM GENİŞLİKTE YAPILDI) */
+        .hero-banner {
+            position: relative;
+            z-index: 100;
+
+            /* Banner'ı yukarı itmek için negatif margin kaldırıldı */
+            margin-top: 0;
+
+            /* DEĞİŞİKLİK: Sağa tam yapışmayı garantilemek için 105vw yapıldı */
+            width: 105vw;
+
+            /* Sola yapışması için margin-left ayarlandı (section padding'ini yutmak için) */
+            margin-left: -5%;
+
+            /* Margin sağ taraftan boşluğu yutuyor */
+            margin-right: -5vw;
+
+            background: rgba(19, 19, 19, 0.85); /* Arka plan rengi */
+            padding: 60px 5%;
+
+            /* BAŞLANGIÇ: Ekranın sağından başlayıp sola kayması için */
+            transform: translateX(100vw);
+            opacity: 0;
+            transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1), opacity 1.2s ease-out;
+
+            border-radius: 0;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 40px rgba(4, 170, 109, 0.4);
+        }
+
+        /* Animasyon bittiğinde Banner'ı yerine geri getir */
+        .hero-banner:not(.title-hidden) {
+            /* Kayma bittiğinde normal konumuna döner */
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Banner İçeriğini Yöneten Flexbox */
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            /* Metinların ve resmin görünürde ortadan kaymaması için genişlik sınırı */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Kutu Etrafındaki Yazılımcı Glitch Efekti */
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Kutu kenarlığı rengi Spring Green'e ayarlandı */
+            border: 2px dashed rgba(0, 255, 128, 0.5);
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            animation: textGlitchFadeOut 0.5s ease-out 1.2s forwards;
+        }
+
+        /* Glitch Efektinin Kaybolma Animasyonu */
+        @keyframes textGlitchFadeOut {
+            0% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0; transform: scale(1.0); }
+        }
+
+        /* YAZI ALANI */
+        .hero-text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* İçerik sola yaslı kalmalı */
+            align-items: flex-start;
+            padding-right: 50px;
+            padding-left: 0;
+            /* DÜZELTME: Bu kapsayıcıya alt boşluk eklenerek kesilme kesin olarak engellenir */
+            padding-bottom: 30px;
+        }
+
+        /* RESİM STİLLERİ (Kutunun İçinde Sağda) */
+        .hero-image {
+            padding-left: 50px;
+            margin-left: auto; /* Resim, metinden sonra sağa doğru itilir */
+            /* İŞTE İSTEDİĞİNİZ YAVAŞ GEÇİŞ KURALI */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* DEĞİŞİKLİK 7: HOVER EFECTİ (BÜYÜME) */
+        .hero-image:hover {
+            /* İŞTE İSTEDİĞİNİZ BÜYÜME KURALI */
+            transform: scale(1.05);
+        }
+
+        .hero-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 3px solid var(--professional-green);
+            /* Resim gölgesi Spring Green */
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.8);
+        }
+
+        /* BAŞLIK VE ALT BAŞLIK STİLLERİ */
+        #main-title {
+            /* BAŞLANGIÇ OPASİTESİ 0 VE GEÇİŞ EKLENDİ */
+            opacity: 0;
+            transition: opacity 0.5s ease-in 0.2s; /* 0.2s gecikme ekleyelim */
+
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 800 !important;
+            text-transform: capitalize !important;
+            /* İsim boyutu küçültülerek dikey kesilme ihtimali azaltıldı */
+            font-size: 4.2em;
+
+            /* Line height düşürülerek metin hizalaması düzeltildi */
+            line-height: 1.2; /* Daha genel değer */
+            /* Kapsayıcıya eklediğimiz için h1'in kendi padding'ini kaldırıyoruz */
+            padding-bottom: 0;
+
+            margin-bottom: 0.1em;
+
+            /* GRADIENT (GEÇİŞLİ) RENK UYGULAMASI */
+            /* 1. Geçişli arka planı tanımla (Spring Green'den Beyaz'a) */
+            background: linear-gradient(to right, var(--professional-green) 0%, #ffffff 80%);
+            /* 2. Arka planı metinle kırp (webkit prefix'i tarayıcı uyumluluğu için) */
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* 3. Metin rengini şeffaf yap (Böylece arka plan görünür olur) */
+            -webkit-text-fill-color: transparent;
+            color: transparent; /* Fallback */
+
+            letter-spacing: normal;
+        }
+
+        .hero-subtitle {
+            /* BAŞLANGIÇ OPASİTESİ 0 VE GEÇİŞ EKLENDİ */
+            opacity: 0;
+            transition: opacity 0.5s ease-in 0.5s; /* 0.5s gecikme ekleyelim */
+
+            font-family: 'Inter', sans-serif !important;
+            font-size: 1.4em;
+            font-weight: 500;
+            /* Başlık ile alt yazı arasındaki boşluk azaltıldı (daha yakın durması için) */
+            margin-top: 5px;
+            margin-bottom: 40px;
+            /* Alt başlık rengi hafifletildi (Beyaz/Açık Gri) */
+            color: var(--text-color);
+            letter-spacing: normal;
+            text-shadow: 0 0 5px #000;
+        }
+
+        /* CTA Buton stili */
+        .cta-button {
+            /* BAŞLANGIÇ OPASİTESİ 0 */
+            opacity: 0;
+            /* CSS'teki Transition Tanımı (JavaScript bunu ezeceği için JS'te de aynısını tanımlayacağız) */
+            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background 0.3s;
+
+            /* Buton arka planı Spring Green */
+            background: var(--professional-green);
+            border: 2px solid var(--professional-green);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            /* Kenarları keskin yapıldı (0) */
+            border-radius: 0;
+            /* Altı çizili olmaması için */
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            /* Font Inter olarak ayarlandı */
+            font-family: 'Inter', sans-serif !important;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            /* Hover arka planı koyu yeşil tonu */
+            background: #00AA5A;
+            /* Hover gölgesi Spring Green */
+            box-shadow: 0 0 20px var(--professional-green);
+            
+            /* Büyüme Efekti - Artık yavaş çalışacak */
+            transform: scale(1.1);
+        }
+
+        /* HAKKIMDA BÖLÜMÜ STİLİ */
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .bio {
+            flex: 1;
+            max-width: 55%;
+            font-size: 1.1em;
+        }
+
+        /* BECERİ BARLARI (SKILL BARS) STİLİ */
+        .skills-container {
+            flex: 1;
+            max-width: 45%;
+            padding: 20px;
+            /* Kapsayıcı kenarlığı Spring Green şeffaf tonu */
+            border: 1px dashed rgba(0, 255, 128, 0.3);
+            border-radius: 8px;
+        }
+
+        .skills-container h3 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            /* H3 başlıkları Inter olarak ayarlandı */
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+            /* H3 başlık rengi Spring Green */
+            color: var(--professional-green);
+        }
+
+        .skill-info {
+            font-weight: 700;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Inter', sans-serif !important;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            background-color: #333;
+            height: 12px;
+            border-radius: 6px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .skill-level {
+            height: 100%;
+            /* Skill bar rengi Spring Green */
+            background-color: var(--professional-green);
+            box-shadow: 0 0 5px var(--professional-green);
+            transition: width 1.5s ease-in-out;
+            width: 0;
+        }
+
+        /* Bar doluluğu (CSS ile) */
+        .skill:nth-child(2) .skill-level { width: 95%; }
+        .skill:nth-child(3) .skill-level { width: 85%; }
+        .skill:nth-child(4) .skill-level { width: 70%; }
+        .skill:nth-child(5) .skill-level { width: 60%; }
+
+
+        /* PROJELER BÖLÜMÜ STİLİ */
+        .projects {
+            color: var(--text-color);
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: rgba(30, 30, 30, 0.9);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            /* Kart sol kenarlığı Spring Green */
+            border-left: 4px solid var(--professional-green);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s;
+            will-change: transform, box-shadow;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            /* Hover gölgesi Spring Green */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 255, 128, 0.7);
+        }
+
+        .project-card h3 {
+            font-size: 1.8em;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 700 !important;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            /* Link rengi Spring Green */
+            color: var(--professional-green);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* İLETİŞİM BÖLÜMÜ STİLİ */
+        .contact {
+            text-align: center;
+        }
+
+        .contact input[type="text"],
+        .contact input[type="email"],
+        .contact textarea {
+            padding: 15px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #333;
+            color: var(--text-color);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        .contact button {
+            /* Buton arka planı Spring Green */
+            background: var(--professional-green);
+            color: var(--secondary-color);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .contact button:hover {
+            /* Hover arka planı koyu yeşil tonu */
+            background: #00AA5A;
+            /* Hover gölgesi Spring Green */
+            box-shadow: 0 0 15px var(--professional-green);
+        }
+
+        /* FOOTER (ALT KISIM) STİLİ */
+        footer {
+            background: #000000;
+            color: #666;
+            padding: 25px 0;
+            font-size: 1em;
+            z-index: 10;
+        }
+
+        /* --- OPTİMİZASYON (RESPONSIVE) STİLLERİ --- */
+        @media (max-width: 1024px) {
+            .hero-banner {
+                padding: 40px 5%;
+            }
+            .banner-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-image {
+                order: -1;
+                margin-bottom: 30px;
+                padding-left: 0;
+            }
+            .hero-text-content {
+                align-items: center;
+                padding-right: 0;
+            }
+            
+            #main-title { font-size: 3.5em; }
+            .hero-subtitle { font-size: 1.2em; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner {
+                /* Mobil: Alttan gelme başlangıcı */
+                transform: translateY(100vh);
+            }
+            .hero-banner:not(.title-hidden) {
+                transform: translateY(0);
+            }
+            
+            /* Mobil düzeltmeler */
+            .hero-text-content {
+                max-width: 90%;
+                padding: 0;
+                margin-bottom: 30px;
+                
+            }
+            .hero-image {
+                max-width: 50%;
+                
+            }
+        }

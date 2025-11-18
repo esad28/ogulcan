@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Başlık küçük harfle ayarlandı -->
+    <title>oğulcan eyup - Portfolyo</title> 
+    
+    <!-- FONT BAĞLANTISI: Space Mono (Navigasyon Sözü için) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- FONT BAĞLANTISI: Inter (Ana başlık ve içerik için) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS dosyasını buraya bağlıyoruz -->
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    
+
+    <!-- MATRIX EFEKTİ İÇİN CANVAS - TÜM SAYFANIN ARKA PLAINI KAPLAYACAK -->
+    <canvas id="matrix-rain"></canvas>
+    
+    <!-- 1. ÜST KISIM (HEADER) VE NAVİGASYON -->
+    <header>
+        <nav>
+            <!-- LOGO: data-text'te söz kalıyor, metin boş başlıyor -->
+            <div class="logo" id="nav-logo" data-text="Çalışmak seni yormaz; amaçsızlık yorar.">
+                <!-- İmleç span etiketi eklendi -->
+                <span id="nav-cursor" style="opacity:0;">|</span>
+            </div>
+            <ul>
+                <li><a href="#hero">Anasayfa</a></li>
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. ANASAYFA / GİRİŞ BÖLÜMÜ (HERO SECTION) -->
+    <section id="hero" class="hero">
+        
+        <!-- YENİ PROFESYONEL BANNER YAPISI -->
+        <!-- Animasyon için başlangıç sınıfı tekrar eklendi -->
+        <div id="hero-banner" class="hero-banner title-hidden">
+            
+            <!-- Resim ve Yazıyı Yan Yana Tutan İç Flexbox -->
+            <div class="banner-content">
+                
+                <!-- 1. SOL: Metin Alanı -->
+                <div class="hero-text-content">
+                    <!-- Ana Başlık (oğulcan eyup) -->
+                    <h1 id="main-title">Oğulcan Eyup</h1>
+                    <!-- Alt Başlık (Web Geliştirici vs.) -->
+                    <p id="subtitle" class="hero-subtitle">Web Geliştirici | Tasarımcı | Kodlama Tutkunu</p>
+                    <!-- Buton -->
+                    <a href="#projects" class="cta-button">PROJELERİMİ GÖR</a>
+                </div>
+
+                <!-- 2. SAĞ: Resim Alanı (Kutunun İçinde) -->
+                <div class="hero-image">
+                    <!-- Resminizin adını buraya girin -->
+                    <img src="1752839556174.png" alt="Oğulcan Eyüp Profil Resmi">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. HAKKIMDA BÖLÜMÜ -->
+    <section id="about" class="about">
+        <h2>Hakkımda</h2>
+        <div class="about-content">
+            <div class="bio">
+                <p>Burada kendinizden, kariyer hedeflerinizden, felsefenizden ve ilgi alanlarınızdan biraz daha uzun bahsedebilirsiniz. Amacım, teknolojiyi kullanarak kullanıcı dostu ve estetik açıdan çekici çözümler üretmektir.</p>
+                <p>Amacım, teknolojiyi kullanarak kullanıcı dostu ve estetik açıdan çekici çözümler üretmektir.</p>
+            </div>
+
+            <!-- BECERİ BARLARI (SKILL BARS) KISMI -->
+            <div class="skills-container">
+                <h3>Teknik Becerilerim</h3>
+                <div class="skill">
+                    <div class="skill-info"><span>HTML5</span><span>%95</span></div>
+                    <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info"><span>CSS3</span><span>%85</span></div>
+                    <div class="skill-bar"><div class="skill-level" data-level="85"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info"><span>JavaScript</span><span>%70</span></div>
+                    <div class="skill-bar"><div class="skill-level" data-level="70"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info"><span>Python</span><span>%60</span></div>
+                    <div class="skill-bar"><div class="skill-level" data-level="60"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROJELER BÖLÜMÜ -->
+    <section id="projects" class="projects">
+        <h2>Projelerim</h2>
+        <div class="project-list">
+            <div class="project-card">
+                <h3>Proje 1 Adı</h3>
+                <p>Bu projenin kısa açıklaması: HTML, CSS ve JavaScript kullanılarak yapılmış bir e-ticaret sitesi.</p>
+                <a href="#">Görüntüle</a>
+            </div>
+            <div class="project-card">
+                <h3>Proje 2 Adı</h3>
+                <p>Bu projenin kısa açıklaması: Python ve Django ile geliştirilmiş bir blog platformu.</p>
+                <a href="#">Görüntüle</a>
+            </div>
+            <div class="project-card">
+                <h3>Proje 3 Adı</h3>
+                <p>Bu projenin kısa açıklaması: Sadece HTML ve CSS kullanarak yaptığım bir açılış sayfası tasarımı.</p>
+                <a href="#">Görüntüle</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. İLETİŞİM BÖLÜMÜ -->
+    <section id="contact" class="contact">
+        <h2>İletişim</h2>
+        <p>Bana ulaşmak için aşağıdaki formu kullanabilir veya sosyal medya hesaplarımdan takip edebilirsiniz.</p>
+        <form>
+            <input type="text" placeholder="Adınız" required>
+            <input type="email" placeholder="E-posta Adresiniz" required>
+            <textarea placeholder="Mesajınız" rows="5" required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </section>
+
+    <!-- 6. ALT KISIM (FOOTER) -->
+    <footer>
+        <p>&copy; 2025 Oğulcan Eyüp. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- MATRIX RAIN (Akan Sayılar) EFEKTİ İÇİN JAVASCRIPT -->
+    <script>
+        // === CANVAS MATRIX RAIN LOGIC ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('matrix-rain');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let W = canvas.width = window.innerWidth;
+            let H = canvas.height = window.innerHeight;
+            
+            const fontSize = 20;
+            const columns = Math.floor(W / fontSize);
+            const drops = [];
+            const speeds = [];
+
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+                speeds[i] = Math.random() * 1 + 0.5;
+            }
+
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()_+=-[]{};'\\:\"|,./<>?`~";
+            const binary = "01";
+
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, W, H);
+                ctx.fillStyle = '#0a0';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = (Math.random() < 0.8)
+                                     ? binary.charAt(Math.floor(Math.random() * binary.length))
+                                     : chars.charAt(Math.floor(Math.random() * chars.length));
+
+                    const x = i * fontSize;
+                    const y = drops[i] * fontSize;
+
+                    ctx.fillText(text, x, y);
+
+                    if (y * fontSize > H && Math.random() > 0.975) {
+                        drops[i] = 0;
+                        speeds[i] = Math.random() * 1 + 0.5;
+                    }
+                    
+                    drops[i] += speeds[i];
+                }
+            }
+            
+            window.addEventListener('resize', () => {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+                const newColumns = Math.floor(W / fontSize);
+                
+                const oldLength = drops.length;
+                drops.length = newColumns;
+                speeds.length = newColumns;
+
+                for (let i = oldLength; i < newColumns; i++) {
+                    // drops[i] * fontSize > H kontrolünü doğru yapmak için drops[i]'nin değeri piksel değil, satır sayısı olmalıdır.
+                    drops[i] = Math.random() * (H / fontSize); 
+                    speeds[i] = Math.random() * 1 + 0.5;
+                }
+            });
+            window.dispatchEvent(new Event('resize'));
+
+            setInterval(drawMatrix, 60);
+        });
+
+
+        // === YENİ HACKER YAZI ANİMASYONU LOGİĞİ (SADECE LOGO İÇİN) ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('hero-banner');
+            const mainTitle = document.getElementById('main-title');
+            const subtitle = document.getElementById('subtitle');
+            const ctaButton = document.querySelector('.cta-button');
+            const navLogo = document.getElementById('nav-logo'); // Navigasyon logosunu yakala
+            const navCursor = document.getElementById('nav-cursor'); // İmleci yakala
+            
+            if (!banner || !mainTitle || !subtitle || !ctaButton || !navLogo || !navCursor) return;
+
+            // Step 1: Slide-in ve Fade-in animasyonunu başlat
+            // Not: CSS'te .hero-banner:not(.title-hidden) kuralı kullanıldığı için,
+            // JavaScript tarafında CSS kuralını tetiklemek için bu sınıf kaldırılır.
+            setTimeout(() => {
+                banner.classList.remove('title-hidden');
+            }, 500); 
+
+            // Kod Matrisi Karakterleri
+            const CODE_CHARS = "01"; 
+            
+            // HACKER GLITCH ANİMASYONU (Sadece Logo için kullanılacak)
+            function startHackerAnimation(element, text, delay, speed) {
+                return new Promise(resolve => {
+                    let charIndex = 0;
+                    element.textContent = ''; 
+                    
+                    // Fontu Space Mono yap (söz için)
+                    element.style.fontFamily = "'Space Mono', monospace"; 
+                    element.style.textTransform = 'capitalize';
+
+                    // 1. Yazma (Typewriter) fazı
+                    function typeChar() {
+                        if (charIndex < text.length) {
+                            const targetChar = text.charAt(charIndex);
+                            const currentText = element.textContent;
+
+                            // 2. Glitch/Matrix (Yanıp Sönme) fazı
+                            let glitchCount = 0;
+                            const maxGlitch = 3; 
+                            
+                            function glitchPhase() {
+                                if (glitchCount < maxGlitch) {
+                                    const randomChar = targetChar === ' ' ? ' ' : CODE_CHARS.charAt(Math.floor(Math.random() * CODE_CHARS.length));
+                                    element.textContent = currentText + randomChar;
+                                    glitchCount++;
+                                    setTimeout(glitchPhase, 50); // Glitch hızı
+                                } else {
+                                    // 3. Karakteri sabitleme
+                                    element.textContent = currentText + targetChar;
+                                    charIndex++;
+                                    setTimeout(typeChar, speed); // YENİ HIZ
+                                }
+                            }
+                            glitchPhase();
+                        } else {
+                            resolve(); // Animasyon bitti
+                        }
+                    }
+                    setTimeout(typeChar, delay);
+                });
+            }
+            
+            // Metin animasyonlarını sıralı başlatma
+            banner.addEventListener('transitionend', async function handler(e) {
+                // Sadece transform özelliği bittiğinde devam et
+                if (e.propertyName !== 'transform' && e.propertyName !== 'opacity') return; 
+                
+                // Birden fazla transitionend tetiklenmesini önle
+                if (e.target.id !== 'hero-banner' && e.propertyName !== 'opacity') return;
+
+                // Animasyon tetikleyicisini kaldır
+                banner.removeEventListener('transitionend', handler); 
+                
+                // Ana Sayfa Metin Animasyonları (SIRALI)
+                
+                // 1. İsim (H1) - En önce bu aydınlanıyor
+                setTimeout(() => {
+                    mainTitle.style.opacity = 1;
+                    
+                    // 2. Alt Başlık - İsimden sonra aydınlanıyor
+                    setTimeout(() => {
+                        subtitle.style.opacity = 1;
+
+                        // 3. Buton - En SON aydınlanıyor (Alt başlık geldikten sonra)
+                        setTimeout(() => {
+                            ctaButton.style.opacity = 1;
+                            // Transition'ı burada veriyoruz ki hem açılış efekti yumuşak olsun hem de hover efekti çalışsın
+                            ctaButton.style.transition = 'opacity 0.8s ease, transform 1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background 0.3s';
+                        }, 500); // Alt başlıktan 500ms sonra
+
+                    }, 400); // İsimden 400ms sonra
+                }, 200); // Banner durduktan 200ms sonra
+                
+                // 4. NAV BAR SÖZÜ EN SON GELİYOR (GLITCH ANİMASYONU) - Butonla eş zamanlı başlayabilir
+                const navText = navLogo.getAttribute('data-text') + '.'; // Nokta eklendi
+                
+                // İmleci başlangıçta kelime kutusunun içine ekle
+                navLogo.textContent = ''; // Metin alanını boşalt
+                navLogo.appendChild(navCursor); 
+                navCursor.style.opacity = 1; // İmleci görünür yap
+                navCursor.style.animation = 'none'; // Yanıp sönmeyi durdur
+
+                // Animasyonu başlat
+                await startHackerAnimation(navLogo, navText, 1500, 45); 
+
+                // Animasyon bitince imleci yanıp söndür
+                navLogo.appendChild(navCursor); // İmleci tekrar en sona taşı
+                navCursor.style.animation = 'blink 1s infinite'; 
+            });
+            
+            // Skill Bar Animasyonu için Observer
+            const skillBars = document.querySelectorAll('.skill');
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillLevel = entry.target.querySelector('.skill-level');
+                        const percent = entry.target.querySelector('.skill-level').getAttribute('data-level');
+                        skillLevel.style.width = `${percent}%`;
+                        skillObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.8
+            });
+
+            skillBars.forEach(bar => skillObserver.observe(bar));
+            
+            // Eğer sayfa en üstte başlarsa ve animasyon tetiklenmediyse manuel olarak tetikle (Mobil senaryolar için)
+            if (window.scrollY === 0) {
+                setTimeout(() => {
+                    banner.classList.remove('title-hidden');
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
