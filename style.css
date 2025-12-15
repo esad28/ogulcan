@@ -692,14 +692,14 @@
             }
             
             /* Geçiş efektleri (Sıralama: İsim -> Unvan -> Buton -> Resim) */
-            /* 1. İsim */
+            /* 1. İsim - GECİKME YOK */
             #main-title { transition: opacity 0.6s ease, transform 0.6s ease; }
-            /* 2. Unvan (Biraz bekle) */
-            .hero-subtitle { transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s; }
-            /* 3. Buton (Daha sonra) */
-            .cta-button { transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s, background 0.3s, box-shadow 0.3s; }
+            /* 2. Unvan (Yarım saniye bekle) */
+            .hero-subtitle { transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s; }
+            /* 3. Buton (Unvandan yarım saniye sonra) */
+            .cta-button { transition: opacity 0.6s ease 1.0s, transform 0.6s ease 1.0s, background 0.3s, box-shadow 0.3s; }
             /* 4. Resim (EN SON ve YAVAŞ) */
-            .hero-image { transition: opacity 1s ease 1.0s, transform 1s ease 1.0s; }
+            .hero-image { transition: opacity 1s ease 1.5s, transform 1s ease 1.5s; }
 
             .hero-image {
                 padding: 0;
