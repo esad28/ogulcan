@@ -19,7 +19,7 @@
     
 </head>
 <body>
-   
+ 
     <!-- MATRIX EFEKTİ İÇİN CANVAS - TÜM SAYFANIN ARKA PLAINI KAPLAYACAK -->
     <canvas id="matrix-rain"></canvas>
     
@@ -62,7 +62,7 @@
                     <!-- Ana Başlık (oğulcan eyup) -->
                     <h1 id="main-title">Oğulcan Eyup</h1>
                     <!-- Alt Başlık (Web Geliştirici vs.) -->
-                    <p id="subtitle" class="hero-subtitle">Bilgisayar Mühendisliği</p>
+                    <p id="subtitle" class="hero-subtitle">Web Geliştirici | Tasarımcı | Kodlama Tutkunu</p>
                     <!-- Buton -->
                     <a href="#projects" class="cta-button">PROJELERİMİ GÖR</a>
                 </div>
@@ -150,7 +150,7 @@
 
     <!-- MATRIX RAIN (Akan Sayılar) EFEKTİ İÇİN JAVASCRIPT -->
     <script>
-        // --- HAMBURGER MENÜ İŞLEVİ (GÜNCELLENDİ) ---
+        // --- HAMBURGER MENÜ İŞLEVİ (GÜNCELLENDİ - PROFESYONEL) ---
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         const body = document.body; // Body'i yakala
@@ -214,7 +214,7 @@
             setInterval(drawMatrix, 60);
         });
 
-        // --- ANIMASYONLAR ---
+        // --- ANIMASYONLAR (MASAÜSTÜ VE MOBİL İÇİN GÜNCELLENDİ) ---
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('hero-banner');
             const mainTitle = document.getElementById('main-title');
@@ -222,11 +222,25 @@
             const ctaButton = document.querySelector('.cta-button');
             const navLogo = document.getElementById('nav-logo');
             const navCursor = document.getElementById('nav-cursor');
+            const heroTextContent = document.querySelector('.hero-text-content');
             
-            if (!banner || !mainTitle || !subtitle || !ctaButton || !navLogo || !navCursor) return;
+            if (!banner || !mainTitle || !subtitle || !ctaButton || !navLogo || !navCursor || !heroTextContent) return;
 
-            setTimeout(() => { banner.classList.remove('title-hidden'); }, 500); 
+            // --- LOGO METNİNİ CİHAZA GÖRE AYARLA ---
+            let originalNavText = navLogo.getAttribute('data-text');
+            const mobileNavText = "Merhaba";
 
+            function updateLogoText() {
+                if (window.innerWidth <= 768) {
+                    navLogo.setAttribute('data-text', mobileNavText);
+                } else {
+                    navLogo.setAttribute('data-text', originalNavText);
+                }
+            }
+            updateLogoText(); // Başlangıçta ayarla
+            window.addEventListener('resize', updateLogoText); // Ekran boyutu değişirse güncelle
+
+            // --- HACKER ANİMASYON FONKSİYONU ---
             const CODE_CHARS = "01"; 
             function startHackerAnimation(element, text, delay, speed) {
                 return new Promise(resolve => {
@@ -251,31 +265,54 @@
                 });
             }
             
-            banner.addEventListener('transitionend', async function handler(e) {
-                if (e.propertyName !== 'transform' && e.propertyName !== 'opacity') return; 
-                if (e.target.id !== 'hero-banner' && e.propertyName !== 'opacity') return;
-                banner.removeEventListener('transitionend', handler); 
-                
-                // Animasyon Sıralaması: İsim -> Alt Başlık -> Buton
-                setTimeout(() => {
-                    mainTitle.style.opacity = 1;
-                    setTimeout(() => {
-                        subtitle.style.opacity = 1;
-                        setTimeout(() => {
-                            ctaButton.style.opacity = 1;
-                            // Burada butonun hover geçişini de tanımlıyoruz ki açılış animasyonu ile çakışmasın
-                            ctaButton.style.transition = 'opacity 0.8s ease, transform 1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background 0.3s';
-                        }, 500);
-                    }, 400);
-                }, 200);
+            // --- ANİMASYON SIRALAMASI ---
+            const isMobile = window.innerWidth <= 768;
 
-                const navText = navLogo.getAttribute('data-text') + '.';
-                navLogo.textContent = ''; navLogo.appendChild(navCursor); 
-                navCursor.style.opacity = 1; navCursor.style.animation = 'none';
-                await startHackerAnimation(navLogo, navText, 1500, 45); 
-                navLogo.appendChild(navCursor); navCursor.style.animation = 'blink 1s infinite'; 
+            if (isMobile) {
+                // MOBİL ANİMASYON SIRASI: Resim (zaten sabit) -> İsim -> Alt Başlık -> Buton
+                setTimeout(() => {
+                    // Metinlerin kapsayıcısına 'visible' sınıfı ekleyerek CSS geçişlerini tetikle
+                    heroTextContent.classList.add('visible');
+                }, 500); // Sayfa yüklendikten kısa bir süre sonra başlat
+
+            } else {
+                // MASAÜSTÜ ANİMASYON SIRASI: Banner Kayması -> İsim -> Alt Başlık -> Buton
+                setTimeout(() => { banner.classList.remove('title-hidden'); }, 500);
+                
+                banner.addEventListener('transitionend', function handler(e) {
+                    if (e.target.id !== 'hero-banner') return; // Sadece banner'ın kendi geçişini dinle
+                    if (e.propertyName !== 'transform' && e.propertyName !== 'opacity') return;
+                    
+                    banner.removeEventListener('transitionend', handler); 
+                    
+                    // Banner geldikten sonra metinleri sırayla göster
+                    setTimeout(() => {
+                        mainTitle.style.opacity = 1;
+                        setTimeout(() => {
+                            subtitle.style.opacity = 1;
+                            setTimeout(() => {
+                                ctaButton.style.opacity = 1;
+                                // Butonun hover geçişini tanımla
+                                ctaButton.style.transition = 'opacity 0.8s ease, transform 1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background 0.3s';
+                            }, 500);
+                        }, 400);
+                    }, 200);
+                });
+            }
+
+            // --- LOGO ANİMASYONUNU BAŞLAT (HER İKİ DURUMDA DA) ---
+            // Hero animasyonlarından bağımsız olarak başlar
+            const finalNavText = navLogo.getAttribute('data-text') + '.'; // Nokta ekle
+            navLogo.textContent = ''; navLogo.appendChild(navCursor); 
+            navCursor.style.opacity = 1; navCursor.style.animation = 'none';
+            
+            // Animasyonu başlat ve bitince imleci yanıp söndür
+            startHackerAnimation(navLogo, finalNavText, 1000, 45).then(() => {
+                navLogo.appendChild(navCursor); 
+                navCursor.style.animation = 'blink 1s infinite'; 
             });
             
+            // --- SKILL BAR ANİMASYONU ---
             const skillBars = document.querySelectorAll('.skill');
             const skillObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -289,7 +326,8 @@
             }, { threshold: 0.8 });
             skillBars.forEach(bar => skillObserver.observe(bar));
             
-            if (window.scrollY === 0) {
+            // Masaüstünde sayfa üstteyse banner animasyonunu tetikle
+            if (!isMobile && window.scrollY === 0) {
                 setTimeout(() => { banner.classList.remove('title-hidden'); }, 100);
             }
         });

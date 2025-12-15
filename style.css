@@ -585,7 +585,7 @@
                 font-size: 24px;
             }
 
-            /* TAM EKRAN OVERLAY MENÜ TASARIMI */
+            /* TAM EKRAN OVERLAY MENÜ TASARIMI (PROFESYONEL) */
             nav ul {
                 display: flex;
                 flex-direction: column;
@@ -604,8 +604,6 @@
                 transform: translateY(-100%); /* Yukarıda gizli */
                 opacity: 0;
                 transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-                
-                /* Menü açıkken scroll'u engellemek için JS ile body'ye overflow:hidden eklenecek */
             }
 
             /* Menü Açıkken (.active sınıfı) */
@@ -649,7 +647,7 @@
                 width: 100%;
                 margin: 0;
                 padding: 40px 20px;
-                transform: none !important;
+                transform: none !important; /* Kayma efektini mobilde kapat */
                 opacity: 1;
                 border-radius: 0;
                 box-shadow: none; /* Mobilde gölgeyi kaldır */
@@ -670,11 +668,26 @@
                 align-items: center;
             }
 
-            /* JS animasyonu takılmasın diye mobilde görünürlüğü zorla */
+            /* --- MOBİL HERO ANİMASYONLARI İÇİN CSS --- */
+            /* Mobilde de animasyonla gelecekleri için başlangıçta gizle */
             #main-title, .hero-subtitle, .cta-button {
-                opacity: 1 !important; 
-                transform: none !important;
+                opacity: 0; /* Başlangıçta görünmez */
+                /* Transform kısıtlamasını kaldırıyoruz ki JS ile gerekirse animasyon eklenebilsin */
+                transform: translateY(20px); /* Hafif aşağıdan gelsinler */
             }
+            
+            /* JS ile 'visible' sınıfı eklenince görünür olacaklar */
+            .hero-text-content.visible #main-title,
+            .hero-text-content.visible .hero-subtitle,
+            .hero-text-content.visible .cta-button {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* Geçiş efektleri (Resimden sonra sırayla gelecekler) */
+            #main-title { transition: opacity 0.6s ease, transform 0.6s ease; }
+            .hero-subtitle { transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s; }
+            .cta-button { transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s, background 0.3s, box-shadow 0.3s; }
 
             .hero-image {
                 padding: 0;
@@ -705,11 +718,10 @@
                 padding: 15px 40px; /* Butonu genişlet */
                 width: 100%; /* Tam genişlik butonu (Mobil trendi) */
                 max-width: 300px;
-                color: white;
             }
 
             .hero-banner::before {
-                display: none; 
+                display: none; /* Glitch çerçevesini mobilde kaldır */
             }
 
             /* 3. GENEL BOŞLUKLAR */
