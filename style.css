@@ -705,6 +705,7 @@
                 padding: 15px 40px; /* Butonu genişlet */
                 width: 100%; /* Tam genişlik butonu (Mobil trendi) */
                 max-width: 300px;
+                color: white;
             }
 
             .hero-banner::before {
