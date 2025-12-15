@@ -19,7 +19,7 @@
     
 </head>
 <body>
- 
+    
     <!-- MATRIX EFEKTİ İÇİN CANVAS - TÜM SAYFANIN ARKA PLAINI KAPLAYACAK -->
     <canvas id="matrix-rain"></canvas>
     
@@ -61,7 +61,7 @@
                 <div class="hero-text-content">
                     <!-- Ana Başlık (oğulcan eyup) -->
                     <h1 id="main-title">Oğulcan Eyup</h1>
-                    <!-- Alt Başlık (Web Geliştirici vs.) -->
+                    <!-- Alt Başlık -->
                     <p id="subtitle" class="hero-subtitle">Bilgisayar Mühendisliği Öğrencisi</p>
                     <!-- Buton -->
                     <a href="#projects" class="cta-button">PROJELERİMİ GÖR</a>
@@ -273,7 +273,10 @@
                 setTimeout(() => {
                     // Metinlerin kapsayıcısına 'visible' sınıfı ekleyerek CSS geçişlerini tetikle
                     heroTextContent.classList.add('visible');
-                }, 500); // Sayfa yüklendikten kısa bir süre sonra başlat
+                    
+                    // Resmi de tetikle (CSS gecikmesi ile en son gelecek)
+                    document.querySelector('.hero-image').classList.add('visible');
+                }, 500); 
 
             } else {
                 // MASAÜSTÜ ANİMASYON SIRASI: Banner Kayması -> İsim -> Alt Başlık -> Buton
