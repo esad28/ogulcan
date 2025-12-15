@@ -1,4 +1,4 @@
-    /* ============================================================ */
+  /* ============================================================ */
         /* ============ 1. GENEL SIFIRLAMA VE TEMEL STİLLER ============ */
         /* ============================================================ */
         :root {
@@ -587,14 +587,17 @@
                 display: none; /* Varsayılan olarak gizli */
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
+                top: 60px; /* Header'ın hemen altı */
                 left: 0;
                 width: 100%;
-                background-color: rgba(13, 17, 23, 0.98);
-                border-bottom: 2px solid var(--professional-green);
+                /* İYİLEŞTİRME: Menü arka planı daha şık ve okunabilir yapıldı */
+                background-color: rgba(13, 17, 23, 0.98); 
+            
+                border-bottom: 2px solid var(--professional-green); /* Altına yeşil çizgi */
                 padding: 20px 0;
                 text-align: center;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.9); /* Derinlik gölgesi */
+                z-index: 2001; /* Resmin üzerinde kalmasını garantile */
             }
 
             /* JS ile 'active' sınıfı eklendiğinde görünür olacak */
@@ -637,6 +640,13 @@
                 padding: 0;
                 margin-top: 20px;
                 align-items: center; /* Yazıları ortala */
+            }
+
+            /* SORUN ÇÖZÜMÜ 1: İSİM GÖRÜNME SORUNU */
+            /* Mobilde yazıları zorla görünür yapıyoruz (animasyon takılmasın diye) */
+            #main-title, .hero-subtitle, .cta-button {
+                opacity: 1 !important; 
+                transform: none !important;
             }
 
             .hero-image {
