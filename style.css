@@ -723,7 +723,7 @@
             .hero-subtitle {
                 font-size: 1.1em;
                 margin-bottom: 30px;
-                opacity: 0.8; /* Biraz soluk yap */
+                /* opacity: 0.8; */ /* SİLİNDİ: Bu satır animasyonu bozuyordu */
             }
             
             .cta-button {
