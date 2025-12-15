@@ -1,4 +1,4 @@
-  /* ============================================================ */
+        /* ============================================================ */
         /* ============ 1. GENEL SIFIRLAMA VE TEMEL STİLLER ============ */
         /* ============================================================ */
         :root {
@@ -144,9 +144,11 @@
         /* HAMBURGER MENÜ İKONU (Sadece Mobilde Görünecek - Varsayılan Gizli) */
         .menu-toggle {
             display: none; /* Masaüstünde gizli */
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: var(--professional-green);
             cursor: pointer;
+            z-index: 2002; /* Menünün de üstünde olsun */
+            transition: transform 0.3s ease; /* Dönüş efektleri için */
         }
 
         /* ============================================================ */
@@ -562,88 +564,113 @@
         /* --- CEP TELEFONLARI (768px ve Altı) --- */
         @media (max-width: 768px) {
             
-            /* 1. NAVBAR DÜZENLEMELERİ */
+            /* 1. NAVBAR DÜZENLEMELERİ (SADELEŞTİRME) */
             header {
-                padding: 0 20px; /* Kenar boşluklarını daralt */
+                padding: 0 20px;
                 height: 60px;
+                justify-content: space-between;
             }
 
-            /* Logoyu küçült (taşmasın diye) */
             .logo {
-                font-size: 11px; 
+                font-size: 12px; 
                 max-width: 75%;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
 
-            /* Hamburger ikonunu GÖSTER */
+            /* Hamburger İkonunu Göster */
             .menu-toggle {
                 display: block;
+                font-size: 24px;
             }
 
-            /* Menü linklerini gizle ve açılır hale getir */
+            /* TAM EKRAN OVERLAY MENÜ TASARIMI */
             nav ul {
-                display: none; /* Varsayılan olarak gizli */
+                display: flex;
                 flex-direction: column;
-                position: absolute;
-                top: 60px; /* Header'ın hemen altı */
+                justify-content: center; /* Dikey ortala */
+                align-items: center;     /* Yatay ortala */
+                position: fixed;
+                top: 0;
                 left: 0;
                 width: 100%;
-                /* İYİLEŞTİRME: Menü arka planı daha şık ve okunabilir yapıldı */
-                background-color: rgba(13, 17, 23, 0.98); 
-            
-                border-bottom: 2px solid var(--professional-green); /* Altına yeşil çizgi */
-                padding: 20px 0;
-                text-align: center;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.9); /* Derinlik gölgesi */
-                z-index: 2001; /* Resmin üzerinde kalmasını garantile */
+                height: 100vh; /* Tam ekran */
+                background-color: rgba(13, 17, 23, 0.98); /* Neredeyse tamamen opak arka plan */
+                
+                z-index: 2001; /* Her şeyin üstünde */
+                
+                /* Başlangıçta gizlemek için: */
+                transform: translateY(-100%); /* Yukarıda gizli */
+                opacity: 0;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+                
+                /* Menü açıkken scroll'u engellemek için JS ile body'ye overflow:hidden eklenecek */
             }
 
-            /* JS ile 'active' sınıfı eklendiğinde görünür olacak */
+            /* Menü Açıkken (.active sınıfı) */
             nav ul.active {
-                display: flex;
+                transform: translateY(0); /* Ekrana indir */
+                opacity: 1;
             }
 
-            nav ul li { margin: 15px 0; }
-            nav ul li a { font-size: 1.2em; display: block; padding: 10px; }
+            nav ul li { 
+                margin: 20px 0; /* Linkler arası boşluğu artır */
+                opacity: 0; /* Animasyonla gelmesi için gizle */
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
 
-            /* 2. HERO (GİRİŞ) ALANI DÜZENLEMELERİ */
+            /* Menü açıldığında linklerin sırayla gelmesi */
+            nav ul.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            nav ul.active li:nth-child(1) { transition-delay: 0.1s; }
+            nav ul.active li:nth-child(2) { transition-delay: 0.2s; }
+            nav ul.active li:nth-child(3) { transition-delay: 0.3s; }
+            nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
+
+            nav ul li a { 
+                font-size: 1.8em; /* Linkleri büyüt */
+                font-weight: 800;
+                color: var(--professional-green); /* Yeşil yap */
+            }
+
+            /* 2. HERO (GİRİŞ) ALANI DÜZENLEMELERİ (PROFESYONEL DİZİLİM) */
             .hero {
-                margin-top: 0; /* Negatif marjı kaldır */
+                margin-top: 0;
                 padding-top: 80px;
-                align-items: flex-start; /* İçeriği yukarı yasla */
-                min-height: auto; /* Yüksekliği serbest bırak */
+                align-items: flex-start;
+                min-height: auto;
             }
 
             .hero-banner {
-                /* Mobilde 105vw taşma yapar, %100 yapıyoruz */
                 width: 100%;
-                margin-left: 0;
-                margin-right: 0;
+                margin: 0;
                 padding: 40px 20px;
-                transform: none !important; /* Kayma efektini mobilde kapat */
+                transform: none !important;
                 opacity: 1;
                 border-radius: 0;
+                box-shadow: none; /* Mobilde gölgeyi kaldır */
             }
 
-            .hero-banner:not(.title-hidden) {
-                transform: none;
-            }
+            .hero-banner:not(.title-hidden) { transform: none; }
 
             .banner-content {
-                flex-direction: column-reverse; /* Resmi üste, yazıyı alta al */
+                /* DİKKAT: column-reverse ile RESMİ ÜSTE alıyoruz */
+                flex-direction: column-reverse; 
                 text-align: center;
+                gap: 20px; /* Elemanlar arası boşluk */
             }
 
             .hero-text-content {
                 padding: 0;
-                margin-top: 20px;
-                align-items: center; /* Yazıları ortala */
+                margin-top: 10px;
+                align-items: center;
             }
 
-            /* SORUN ÇÖZÜMÜ 1: İSİM GÖRÜNME SORUNU */
-            /* Mobilde yazıları zorla görünür yapıyoruz (animasyon takılmasın diye) */
+            /* JS animasyonu takılmasın diye mobilde görünürlüğü zorla */
             #main-title, .hero-subtitle, .cta-button {
                 opacity: 1 !important; 
                 transform: none !important;
@@ -652,32 +679,45 @@
             .hero-image {
                 padding: 0;
                 margin: 0;
+                /* Resmi ortala */
+                margin-bottom: 10px;
             }
 
             .hero-image img {
-                width: 160px; /* Resmi küçült */
-                height: 160px;
+                width: 180px; /* Resmi ideal boyuta getir */
+                height: 180px;
+                border-width: 4px; /* Çerçeveyi belirginleştir */
             }
 
             #main-title {
-                font-size: 2.5em; /* Başlığı küçült */
-                line-height: 1.2;
+                font-size: 2.8em; /* Başlık boyutu */
+                line-height: 1.1;
+                margin-bottom: 10px;
             }
 
             .hero-subtitle {
-                font-size: 1em;
-                margin-bottom: 25px;
+                font-size: 1.1em;
+                margin-bottom: 30px;
+                opacity: 0.8; /* Biraz soluk yap */
+            }
+            
+            .cta-button {
+                padding: 15px 40px; /* Butonu genişlet */
+                width: 100%; /* Tam genişlik butonu (Mobil trendi) */
+                max-width: 300px;
             }
 
             .hero-banner::before {
-                display: none; /* Glitch çerçevesini mobilde kaldır (karışıklık olmasın) */
+                display: none; 
             }
 
-            /* 3. DİĞER BÖLÜMLER */
+            /* 3. GENEL BOŞLUKLAR */
             section { padding: 60px 5%; }
             h2 { font-size: 2.2em; }
             
-            .about-content { flex-direction: column; }
-            .bio, .skills-container { max-width: 100%; }
+            .about-content { flex-direction: column; gap: 40px; }
+            .bio, .skills-container { max-width: 100%; text-align: center; } /* Ortala */
+            .skill-info { text-align: left; } /* Skill yazıları solda kalsın */
+            
             .contact input, .contact textarea { width: 100%; }
         }

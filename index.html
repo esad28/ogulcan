@@ -34,7 +34,7 @@
 
             <!-- HAMBURGER BUTONU (Sadece Mobilde Görünür) -->
             <div class="menu-toggle" id="mobile-menu">
-                &#9776;
+                &#9776; <!-- Üç Çizgi -->
             </div>
 
             <!-- MENÜ LİNKLERİ -->
@@ -150,19 +150,31 @@
 
     <!-- MATRIX RAIN (Akan Sayılar) EFEKTİ İÇİN JAVASCRIPT -->
     <script>
-        // --- HAMBURGER MENÜ İŞLEVİ (Sadece Mobil) ---
+        // --- HAMBURGER MENÜ İŞLEVİ (GÜNCELLENDİ) ---
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
+        const body = document.body; // Body'i yakala
 
         if(mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+                
+                // Menü ikonunu değiştir (Üç çizgi <-> Çarpı)
+                if (navLinks.classList.contains('active')) {
+                    mobileMenuBtn.innerHTML = '&#10005;'; // Çarpı (X) ikonu
+                    body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
+                } else {
+                    mobileMenuBtn.innerHTML = '&#9776;'; // Üç çizgi ikonu
+                    body.style.overflow = 'auto'; // Kaymayı geri aç
+                }
             });
         }
 
         function toggleMenu() {
             if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '&#9776;'; // İkonu geri çevir
+                body.style.overflow = 'auto'; // Scroll'u aç
             }
         }
 
