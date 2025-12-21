@@ -49,16 +49,13 @@
             font-weight: 800;
         }
 
-        /* --- SCROLL ANİMASYONLARI (YENİ) --- */
-        /* Bölümler başlangıçta gizli ve aşağıda */
+        /* --- SCROLL ANİMASYONLARI --- */
         .reveal-on-scroll {
             opacity: 0;
             transform: translateY(50px);
             transition: all 1s ease-out;
             will-change: opacity, transform;
         }
-        
-        /* Görünür olunca buraya gelecek */
         .reveal-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
@@ -267,9 +264,7 @@
             height: 100%;
             background-color: var(--professional-green); 
             box-shadow: 0 0 5px var(--professional-green);
-            /* BARI SIFIRDAN BAŞLATMAK İÇİN WIDTH CSS'DEN KALDIRILDI */
             width: 0; 
-            /* Animasyon süresi */
             transition: width 1.5s ease-in-out; 
         }
 
@@ -325,18 +320,52 @@
             .logo { font-size: 12px; max-width: 75%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
             .menu-toggle { display: block; font-size: 24px; }
 
+            /* --- TAM EKRAN OVERLAY MENÜ DÜZELTMESİ (BURASI GÜNCELLENDİ) --- */
             nav ul {
-                display: flex; flex-direction: column; justify-content: center; align-items: center;
-                position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+                display: flex; 
+                flex-direction: column; 
+                justify-content: center; 
+                align-items: center;
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100vw; /* Tam genişlik */
+                height: 100vh; /* Tam yükseklik */
                 
-                transform: translateY(-100%); opacity: 0;
+                /* ARKA PLAN AYARI: Siyahın şeffaf tonu ve bulanıklık */
+                background-color: rgba(13, 17, 23, 0.98) !important; 
+                
+                
+                z-index: 2001; /* Her şeyin üstünde */
+                transform: translateY(-100%); 
+                opacity: 0;
                 transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+                
+                /* Default stil sıfırlamaları */
+                margin: 0;
+                padding: 0;
             }
+            
             nav ul.active { transform: translateY(0); opacity: 1; }
-            nav ul li { margin: 20px 0; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; }
+            
+            nav ul li { 
+                margin: 20px 0; 
+                opacity: 0; 
+                transform: translateY(20px); 
+                transition: opacity 0.3s ease, transform 0.3s ease; 
+            }
+            
             nav ul.active li { opacity: 1; transform: translateY(0); }
-            nav ul.active li:nth-child(1) { transition-delay: 0.1s; } nav ul.active li:nth-child(2) { transition-delay: 0.2s; } nav ul.active li:nth-child(3) { transition-delay: 0.3s; } nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
-            nav ul li a { font-size: 1.8em; font-weight: 800; color: var(--professional-green); }
+            nav ul.active li:nth-child(1) { transition-delay: 0.1s; } 
+            nav ul.active li:nth-child(2) { transition-delay: 0.2s; } 
+            nav ul.active li:nth-child(3) { transition-delay: 0.3s; } 
+            nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
+            
+            nav ul li a { 
+                font-size: 1.8em; 
+                font-weight: 800; 
+                color: var(--professional-green); 
+            }
 
             .hero { margin-top: 0; padding-top: 80px; align-items: flex-start; min-height: auto; }
             .hero-banner { width: 100%; margin: 0; padding: 40px 20px; transform: none !important; opacity: 1; border-radius: 0; box-shadow: none; }
