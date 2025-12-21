@@ -20,24 +20,16 @@
 </head>
 <body>
    
-    <!-- MATRIX EFEKTİ İÇİN CANVAS - TÜM SAYFANIN ARKA PLAINI KAPLAYACAK -->
     <canvas id="matrix-rain"></canvas>
     
-    <!-- 1. ÜST KISIM (HEADER) VE NAVİGASYON -->
     <header>
         <nav>
-            <!-- LOGO: data-text'te söz kalıyor, metin boş başlıyor -->
             <div class="logo" id="nav-logo" data-text="Çalışmak seni yormaz; amaçsızlık yorar.">
-                <!-- İmleç span etiketi eklendi -->
                 <span id="nav-cursor" style="opacity:0;">|</span>
             </div>
-
-            <!-- HAMBURGER BUTONU (Sadece Mobilde Görünür) -->
             <div class="menu-toggle" id="mobile-menu">
-                &#9776; <!-- Üç Çizgi -->
+                &#9776;
             </div>
-
-            <!-- MENÜ LİNKLERİ -->
             <ul id="nav-links">
                 <li><a href="#hero" onclick="toggleMenu()">Anasayfa</a></li>
                 <li><a href="#about" onclick="toggleMenu()">Hakkımda</a></li>
@@ -47,92 +39,51 @@
         </nav>
     </header>
 
-    <!-- 2. ANASAYFA / GİRİŞ BÖLÜMÜ (HERO SECTION) -->
     <section id="hero" class="hero">
-        
-        <!-- YENİ PROFESYONEL BANNER YAPISI -->
-        <!-- Animasyon için başlangıç sınıfı tekrar eklendi -->
         <div id="hero-banner" class="hero-banner title-hidden">
-            
-            <!-- Resim ve Yazıyı Yan Yana Tutan İç Flexbox -->
             <div class="banner-content">
-                
-                <!-- 1. SOL: Metin Alanı -->
                 <div class="hero-text-content">
-                    <!-- Ana Başlık (oğulcan eyup) -->
                     <h1 id="main-title">Oğulcan Eyup</h1>
-                    <!-- Alt Başlık -->
                     <p id="subtitle" class="hero-subtitle">Bilgisayar Mühendisliği Öğrencisi</p>
-                    <!-- Buton -->
                     <a href="#projects" class="cta-button">PROJELERİMİ GÖR</a>
                 </div>
-
-                <!-- 2. SAĞ: Resim Alanı (Kutunun İçinde) -->
                 <div class="hero-image">
-                    <!-- Resminizin adını buraya girin -->
                     <img src="1752839556174.png" alt="Oğulcan Eyüp Profil Resmi">
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 3. HAKKIMDA BÖLÜMÜ -->
-    <section id="about" class="about">
+    <!-- CLASS EKLENDİ: reveal-on-scroll -->
+    <section id="about" class="about reveal-on-scroll">
         <h2>Hakkımda</h2>
         <div class="about-content">
             <div class="bio">
                 <p>Burada kendinizden, kariyer hedeflerinizden, felsefenizden ve ilgi alanlarınızdan biraz daha uzun bahsedebilirsiniz. Amacım, teknolojiyi kullanarak kullanıcı dostu ve estetik açıdan çekici çözümler üretmektir.</p>
                 <p>Amacım, teknolojiyi kullanarak kullanıcı dostu ve estetik açıdan çekici çözümler üretmektir.</p>
             </div>
-
-            <!-- BECERİ BARLARI (SKILL BARS) KISMI -->
             <div class="skills-container">
                 <h3>Teknik Becerilerim</h3>
-                <div class="skill">
-                    <div class="skill-info"><span>HTML5</span><span>%95</span></div>
-                    <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
-                </div>
-                <div class="skill">
-                    <div class="skill-info"><span>CSS3</span><span>%85</span></div>
-                    <div class="skill-bar"><div class="skill-level" data-level="85"></div></div>
-                </div>
-                <div class="skill">
-                    <div class="skill-info"><span>JavaScript</span><span>%70</span></div>
-                    <div class="skill-bar"><div class="skill-level" data-level="70"></div></div>
-                </div>
-                <div class="skill">
-                    <div class="skill-info"><span>Python</span><span>%60</span></div>
-                    <div class="skill-bar"><div class="skill-level" data-level="60"></div></div>
-                </div>
+                <div class="skill"><div class="skill-info"><span>HTML5</span><span>%95</span></div><div class="skill-bar"><div class="skill-level" data-level="95"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>CSS3</span><span>%85</span></div><div class="skill-bar"><div class="skill-level" data-level="85"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>JavaScript</span><span>%70</span></div><div class="skill-bar"><div class="skill-level" data-level="70"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Python</span><span>%60</span></div><div class="skill-bar"><div class="skill-level" data-level="60"></div></div></div>
             </div>
         </div>
     </section>
 
-    <!-- 4. PROJELER BÖLÜMÜ -->
-    <section id="projects" class="projects">
+    <!-- CLASS EKLENDİ: reveal-on-scroll -->
+    <section id="projects" class="projects reveal-on-scroll">
         <h2>Projelerim</h2>
         <div class="project-list">
-            <div class="project-card">
-                <h3>Proje 1 Adı</h3>
-                <p>Bu projenin kısa açıklaması: HTML, CSS ve JavaScript kullanılarak yapılmış bir e-ticaret sitesi.</p>
-                <a href="#">Görüntüle</a>
-            </div>
-            <div class="project-card">
-                <h3>Proje 2 Adı</h3>
-                <p>Bu projenin kısa açıklaması: Python ve Django ile geliştirilmiş bir blog platformu.</p>
-                <a href="#">Görüntüle</a>
-            </div>
-            <div class="project-card">
-                <h3>Proje 3 Adı</h3>
-                <p>Bu projenin kısa açıklaması: Sadece HTML ve CSS kullanarak yaptığım bir açılış sayfası tasarımı.</p>
-                <a href="#">Görüntüle</a>
-            </div>
+            <div class="project-card"><h3>Proje 1 Adı</h3><p>Bu projenin kısa açıklaması: HTML, CSS ve JavaScript kullanılarak yapılmış bir e-ticaret sitesi.</p><a href="#">Görüntüle</a></div>
+            <div class="project-card"><h3>Proje 2 Adı</h3><p>Bu projenin kısa açıklaması: Python ve Django ile geliştirilmiş bir blog platformu.</p><a href="#">Görüntüle</a></div>
+            <div class="project-card"><h3>Proje 3 Adı</h3><p>Bu projenin kısa açıklaması: Sadece HTML ve CSS kullanarak yaptığım bir açılış sayfası tasarımı.</p><a href="#">Görüntüle</a></div>
         </div>
     </section>
 
-    <!-- 5. İLETİŞİM BÖLÜMÜ -->
-    <section id="contact" class="contact">
+    <!-- CLASS EKLENDİ: reveal-on-scroll -->
+    <section id="contact" class="contact reveal-on-scroll">
         <h2>İletişim</h2>
         <p>Bana ulaşmak için aşağıdaki formu kullanabilir veya sosyal medya hesaplarımdan takip edebilirsiniz.</p>
         <form>
@@ -143,29 +94,24 @@
         </form>
     </section>
 
-    <!-- 6. ALT KISIM (FOOTER) -->
     <footer>
         <p>&copy; 2025 Oğulcan Eyüp. Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- MATRIX RAIN (Akan Sayılar) EFEKTİ İÇİN JAVASCRIPT -->
     <script>
-        // --- HAMBURGER MENÜ İŞLEVİ (GÜNCELLENDİ - PROFESYONEL) ---
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
-        const body = document.body; // Body'i yakala
+        const body = document.body;
 
         if(mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
-                
-                // Menü ikonunu değiştir (Üç çizgi <-> Çarpı)
                 if (navLinks.classList.contains('active')) {
-                    mobileMenuBtn.innerHTML = '&#10005;'; // Çarpı (X) ikonu
-                    body.style.overflow = 'hidden'; // Arka plan kaymasını engelle
+                    mobileMenuBtn.innerHTML = '&#10005;'; 
+                    body.style.overflow = 'hidden'; 
                 } else {
-                    mobileMenuBtn.innerHTML = '&#9776;'; // Üç çizgi ikonu
-                    body.style.overflow = 'auto'; // Kaymayı geri aç
+                    mobileMenuBtn.innerHTML = '&#9776;'; 
+                    body.style.overflow = 'auto'; 
                 }
             });
         }
@@ -173,12 +119,11 @@
         function toggleMenu() {
             if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '&#9776;'; // İkonu geri çevir
-                body.style.overflow = 'auto'; // Scroll'u aç
+                mobileMenuBtn.innerHTML = '&#9776;';
+                body.style.overflow = 'auto';
             }
         }
 
-        // --- MATRIX RAIN ---
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('matrix-rain');
             if (!canvas) return;
@@ -214,7 +159,6 @@
             setInterval(drawMatrix, 60);
         });
 
-        // --- ANIMASYONLAR (MASAÜSTÜ VE MOBİL İÇİN GÜNCELLENDİ) ---
         document.addEventListener('DOMContentLoaded', () => {
             const banner = document.getElementById('hero-banner');
             const mainTitle = document.getElementById('main-title');
@@ -226,7 +170,6 @@
             
             if (!banner || !mainTitle || !subtitle || !ctaButton || !navLogo || !navCursor || !heroTextContent) return;
 
-            // --- LOGO METNİNİ CİHAZA GÖRE AYARLA ---
             let originalNavText = navLogo.getAttribute('data-text');
             const mobileNavText = "Merhaba";
 
@@ -237,10 +180,9 @@
                     navLogo.setAttribute('data-text', originalNavText);
                 }
             }
-            updateLogoText(); // Başlangıçta ayarla
-            window.addEventListener('resize', updateLogoText); // Ekran boyutu değişirse güncelle
+            updateLogoText(); 
+            window.addEventListener('resize', updateLogoText); 
 
-            // --- HACKER ANİMASYON FONKSİYONU ---
             const CODE_CHARS = "01"; 
             function startHackerAnimation(element, text, delay, speed) {
                 return new Promise(resolve => {
@@ -265,37 +207,25 @@
                 });
             }
             
-            // --- ANİMASYON SIRALAMASI ---
             const isMobile = window.innerWidth <= 768;
 
             if (isMobile) {
-                // MOBİL ANİMASYON SIRASI: Resim (zaten sabit) -> İsim -> Alt Başlık -> Buton
                 setTimeout(() => {
-                    // Metinlerin kapsayıcısına 'visible' sınıfı ekleyerek CSS geçişlerini tetikle
                     heroTextContent.classList.add('visible');
-                    
-                    // Resmi de tetikle (CSS gecikmesi ile en son gelecek)
                     document.querySelector('.hero-image').classList.add('visible');
                 }, 500); 
-
             } else {
-                // MASAÜSTÜ ANİMASYON SIRASI: Banner Kayması -> İsim -> Alt Başlık -> Buton
                 setTimeout(() => { banner.classList.remove('title-hidden'); }, 500);
-                
                 banner.addEventListener('transitionend', function handler(e) {
-                    if (e.target.id !== 'hero-banner') return; // Sadece banner'ın kendi geçişini dinle
+                    if (e.target.id !== 'hero-banner') return; 
                     if (e.propertyName !== 'transform' && e.propertyName !== 'opacity') return;
-                    
                     banner.removeEventListener('transitionend', handler); 
-                    
-                    // Banner geldikten sonra metinleri sırayla göster
                     setTimeout(() => {
                         mainTitle.style.opacity = 1;
                         setTimeout(() => {
                             subtitle.style.opacity = 1;
                             setTimeout(() => {
                                 ctaButton.style.opacity = 1;
-                                // Butonun hover geçişini tanımla
                                 ctaButton.style.transition = 'opacity 0.8s ease, transform 1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background 0.3s';
                             }, 500);
                         }, 400);
@@ -303,19 +233,16 @@
                 });
             }
 
-            // --- LOGO ANİMASYONUNU BAŞLAT (HER İKİ DURUMDA DA) ---
-            // Hero animasyonlarından bağımsız olarak başlar
-            const finalNavText = navLogo.getAttribute('data-text') + '.'; // Nokta ekle
+            const finalNavText = navLogo.getAttribute('data-text') + '.';
             navLogo.textContent = ''; navLogo.appendChild(navCursor); 
             navCursor.style.opacity = 1; navCursor.style.animation = 'none';
             
-            // Animasyonu başlat ve bitince imleci yanıp söndür
             startHackerAnimation(navLogo, finalNavText, 1000, 45).then(() => {
                 navLogo.appendChild(navCursor); 
                 navCursor.style.animation = 'blink 1s infinite'; 
             });
             
-            // --- SKILL BAR ANİMASYONU ---
+            // --- SKILL BAR GÖZLEMCİSİ ---
             const skillBars = document.querySelectorAll('.skill');
             const skillObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -326,10 +253,22 @@
                         skillObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.8 });
+            }, { threshold: 0.5 }); // Mobilde %50 görünce dolsun
             skillBars.forEach(bar => skillObserver.observe(bar));
+
+            // --- BÖLÜM GEÇİŞ ANİMASYONLARI (SCROLL REVEAL) ---
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 }); // %15 görününce efekt başlasın
+
+            revealElements.forEach(el => revealObserver.observe(el));
             
-            // Masaüstünde sayfa üstteyse banner animasyonunu tetikle
             if (!isMobile && window.scrollY === 0) {
                 setTimeout(() => { banner.classList.remove('title-hidden'); }, 100);
             }
